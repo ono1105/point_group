@@ -6,6 +6,14 @@
   },
   "groups": [
     {
+      "id": 1,
+      "schoenflies": "C1",
+      "hermann_mauguin": "1",
+      "order": 1,
+      "crystal_system": "triclinic",
+      "file": "01_C1.json"
+    },
+    {
       "id": 13,
       "schoenflies": "C3v",
       "hermann_mauguin": "3m",

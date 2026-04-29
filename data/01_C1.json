@@ -1,0 +1,68 @@
+{
+  "schoenflies": "C1",
+  "hermann_mauguin": "1",
+  "crystal_system": "triclinic",
+  "order": 1,
+  "abelian": true,
+  "generators": [],
+
+  "matrix_representation": "float",
+  "convention": {
+    "multiplication": "left-acting: table[i][j] = k means M_i @ M_j = M_k (g_j applied first)",
+    "matrix_basis": "orthonormal Cartesian, principal axis along z"
+  },
+
+  "element_to_index": {
+    "E": 0
+  },
+
+  "elements": [
+    {
+      "index": 0,
+      "schoenflies": "E",
+      "seitz": "(E|0)",
+      "matrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "identity",
+      "element_order": 1,
+      "inverse": 0,
+      "axis": null,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    }
+  ],
+
+  "multiplication_table": [
+    [0]
+  ],
+
+  "conjugacy_classes": [
+    [0]
+  ],
+  "conjugacy_class_names": ["E"],
+
+  "center": [0],
+  "commutator_subgroup": [0],
+  "abelianization": "C1",
+  "is_symmorphic": true,
+
+  "subgroups": [
+    {
+      "schoenflies": "C1",
+      "element_indices": [0],
+      "order": 1,
+      "index_in_parent": 1,
+      "is_normal": true,
+      "is_trivial": true,
+      "is_whole_group": true,
+      "is_maximal": false,
+      "coset_representatives": [0],
+      "quotient_group": "C1",
+      "note": "trivial group: 自分自身が唯一の部分群（trivial かつ whole group）"
+    }
+  ],
+  "normal_subgroups": [0]
+}
