@@ -24,8 +24,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install numpy pytest
 
-      - name: Run validation
+      - name: Run validate.py
         run: python validate.py
 
       - name: Run pytest
-        run: pytest tests/
+        run: pytest tests/ -v

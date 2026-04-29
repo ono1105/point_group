@@ -1,0 +1,225 @@
+{
+  "schoenflies": "C3v",
+  "hermann_mauguin": "3m",
+  "crystal_system": "trigonal",
+  "order": 6,
+  "abelian": false,
+  "generators": [1, 3],
+
+  "matrix_representation": "float",
+  "convention": {
+    "multiplication": "left-acting: table[i][j] = k means M_i @ M_j = M_k (g_j applied first)",
+    "matrix_basis": "orthonormal Cartesian, principal axis along z",
+    "sigma_v_orientation": "σv contains x-axis (i.e., normal to xz-plane is σv's mirror)"
+  },
+
+  "element_to_index": {
+    "E": 0,
+    "C3": 1,
+    "C3^2": 2,
+    "σv": 3,
+    "σv'": 4,
+    "σv''": 5
+  },
+
+  "elements": [
+    {
+      "index": 0,
+      "schoenflies": "E",
+      "seitz": "(E|0)",
+      "matrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "identity",
+      "element_order": 1,
+      "inverse": 0,
+      "axis": null,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 1,
+      "schoenflies": "C3",
+      "seitz": "(C3z|0)",
+      "matrix": [
+        [-0.5, -0.8660254037844386, 0.0],
+        [0.8660254037844386, -0.5, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 3,
+      "inverse": 2,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 120,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 2,
+      "schoenflies": "C3^2",
+      "seitz": "(C3z^2|0)",
+      "matrix": [
+        [-0.5, 0.8660254037844386, 0.0],
+        [-0.8660254037844386, -0.5, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 3,
+      "inverse": 1,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 240,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 3,
+      "schoenflies": "σv",
+      "seitz": "(σv|0)",
+      "matrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, -1.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "reflection",
+      "element_order": 2,
+      "inverse": 3,
+      "axis": null,
+      "plane_normal": [0.0, 1.0, 0.0],
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 4,
+      "schoenflies": "σv'",
+      "seitz": "(σv'|0)",
+      "matrix": [
+        [-0.5, 0.8660254037844386, 0.0],
+        [0.8660254037844386, 0.5, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "reflection",
+      "element_order": 2,
+      "inverse": 4,
+      "axis": null,
+      "plane_normal": [0.8660254037844386, -0.5, 0.0],
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 5,
+      "schoenflies": "σv''",
+      "seitz": "(σv''|0)",
+      "matrix": [
+        [-0.5, -0.8660254037844386, 0.0],
+        [-0.8660254037844386, 0.5, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "reflection",
+      "element_order": 2,
+      "inverse": 5,
+      "axis": null,
+      "plane_normal": [-0.8660254037844386, -0.5, 0.0],
+      "translation": [0, 0, 0]
+    }
+  ],
+
+  "multiplication_table": [
+    [0, 1, 2, 3, 4, 5],
+    [1, 2, 0, 4, 5, 3],
+    [2, 0, 1, 5, 3, 4],
+    [3, 5, 4, 0, 2, 1],
+    [4, 3, 5, 1, 0, 2],
+    [5, 4, 3, 2, 1, 0]
+  ],
+
+  "conjugacy_classes": [
+    [0],
+    [1, 2],
+    [3, 4, 5]
+  ],
+  "conjugacy_class_names": ["E", "2C3", "3σv"],
+
+  "center": [0],
+  "commutator_subgroup": [0, 1, 2],
+  "abelianization": "C2",
+  "is_symmorphic": true,
+
+  "subgroups": [
+    {
+      "schoenflies": "C1",
+      "element_indices": [0],
+      "order": 1,
+      "index_in_parent": 6,
+      "is_normal": true,
+      "is_trivial": true,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3, 4, 5],
+      "quotient_group": "C3v"
+    },
+    {
+      "schoenflies": "Cs(σv)",
+      "element_indices": [0, 3],
+      "order": 2,
+      "index_in_parent": 3,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 1, 2],
+      "quotient_group": null,
+      "note": "正規でないため商群は群にならない"
+    },
+    {
+      "schoenflies": "Cs(σv')",
+      "element_indices": [0, 4],
+      "order": 2,
+      "index_in_parent": 3,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 1, 2],
+      "quotient_group": null,
+      "note": "正規でないため商群は群にならない"
+    },
+    {
+      "schoenflies": "Cs(σv'')",
+      "element_indices": [0, 5],
+      "order": 2,
+      "index_in_parent": 3,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 1, 2],
+      "quotient_group": null,
+      "note": "正規でないため商群は群にならない"
+    },
+    {
+      "schoenflies": "C3",
+      "element_indices": [0, 1, 2],
+      "order": 3,
+      "index_in_parent": 2,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 3],
+      "quotient_group": "C2"
+    },
+    {
+      "schoenflies": "C3v",
+      "element_indices": [0, 1, 2, 3, 4, 5],
+      "order": 6,
+      "index_in_parent": 1,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": true,
+      "is_maximal": false,
+      "coset_representatives": [0],
+      "quotient_group": "C1"
+    }
+  ],
+  "normal_subgroups": [0, 4, 5]
+}

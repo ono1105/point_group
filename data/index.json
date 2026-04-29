@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "convention": {
+    "multiplication": "left-acting: table[i][j] = k means M_i @ M_j = M_k (g_j applied first)",
+    "matrix_basis": "orthonormal Cartesian, principal rotation axis along z"
+  },
+  "groups": [
+    {
+      "id": 13,
+      "schoenflies": "C3v",
+      "hermann_mauguin": "3m",
+      "order": 6,
+      "crystal_system": "trigonal",
+      "file": "13_C3v.json"
+    }
+  ]
+}
