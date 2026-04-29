@@ -14,6 +14,14 @@
       "file": "01_C1.json"
     },
     {
+      "id": 2,
+      "schoenflies": "Ci",
+      "hermann_mauguin": "-1",
+      "order": 2,
+      "crystal_system": "triclinic",
+      "file": "02_Ci.json"
+    },
+    {
       "id": 13,
       "schoenflies": "C3v",
       "hermann_mauguin": "3m",
