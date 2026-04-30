@@ -70,12 +70,28 @@
       "file": "08_D2h.json"
     },
     {
-      "id": 13,
+      "id": 9,
+      "schoenflies": "C4",
+      "hermann_mauguin": "4",
+      "order": 4,
+      "crystal_system": "tetragonal",
+      "file": "09_C4.json"
+    },
+    {
+      "id": 10,
+      "schoenflies": "S4",
+      "hermann_mauguin": "-4",
+      "order": 4,
+      "crystal_system": "tetragonal",
+      "file": "10_S4.json"
+    },
+    {
+      "id": 19,
       "schoenflies": "C3v",
       "hermann_mauguin": "3m",
       "order": 6,
       "crystal_system": "trigonal",
-      "file": "13_C3v.json"
+      "file": "19_C3v.json"
     }
   ]
 }
