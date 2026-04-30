@@ -1,0 +1,470 @@
+{
+  "schoenflies": "D6",
+  "hermann_mauguin": "622",
+  "crystal_system": "hexagonal",
+  "order": 12,
+  "abelian": false,
+  "generators": [1, 6],
+  "matrix_representation": "float",
+  "convention": {
+    "multiplication": "left-acting: table[i][j] = k means M_i @ M_j = M_k (g_j applied first)",
+    "matrix_basis": "orthonormal Cartesian, principal axis along z",
+    "c6_axis_orientation": "C6 軸を z 軸に取る（反時計回り 60°）",
+    "u2_axes_orientation": "水平 C2 軸は 2 共役類に分類: C2' 群（0°, 60°, 120°）と C2'' 群（30°, 90°, 150°）。C6 で C2'(0°)→C2''(30°+... wait): C6 で 60° 回すと C2'(0°) → C2'(60°) となり C2' 群のまま。C2'(x) で共役すると C2''(90°) → C2'(0°) に戻る（異なる型間の変換はしない）。よって C2' と C2'' は D6 の別共役類。HM \"622\" の 2 番目の '2' が C2' 群、3 番目の '2' が C2'' 群に対応"
+  },
+  "element_to_index": {
+    "E": 0,
+    "C6": 1,
+    "C3": 2,
+    "C2": 3,
+    "C3^2": 4,
+    "C6^5": 5,
+    "C2'": 6,
+    "C2'(60°)": 7,
+    "C2'(120°)": 8,
+    "C2''(30°)": 9,
+    "C2''": 10,
+    "C2''(150°)": 11
+  },
+  "elements": [
+    {
+      "index": 0,
+      "schoenflies": "E",
+      "seitz": "(E|0)",
+      "matrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "identity",
+      "element_order": 1,
+      "inverse": 0,
+      "axis": null,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 1,
+      "schoenflies": "C6",
+      "seitz": "(C6z|0)",
+      "matrix": [
+        [0.5, -0.8660254037844386, 0.0],
+        [0.8660254037844386, 0.5, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 6,
+      "inverse": 5,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 60,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 2,
+      "schoenflies": "C3",
+      "seitz": "(C3z|0)",
+      "matrix": [
+        [-0.5, -0.8660254037844386, 0.0],
+        [0.8660254037844386, -0.5, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 3,
+      "inverse": 4,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 120,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 3,
+      "schoenflies": "C2",
+      "seitz": "(C2z|0)",
+      "matrix": [
+        [-1.0, 0.0, 0.0],
+        [0.0, -1.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 2,
+      "inverse": 3,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 180,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 4,
+      "schoenflies": "C3^2",
+      "seitz": "(C3z^2|0)",
+      "matrix": [
+        [-0.5, 0.8660254037844386, 0.0],
+        [-0.8660254037844386, -0.5, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 3,
+      "inverse": 2,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 240,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 5,
+      "schoenflies": "C6^5",
+      "seitz": "(C6z^5|0)",
+      "matrix": [
+        [0.5, 0.8660254037844386, 0.0],
+        [-0.8660254037844386, 0.5, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 6,
+      "inverse": 1,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 300,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 6,
+      "schoenflies": "C2'",
+      "seitz": "(C2,0|0)",
+      "matrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, -1.0, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "rotation",
+      "element_order": 2,
+      "inverse": 6,
+      "axis": [1.0, 0.0, 0.0],
+      "rotation_angle_deg": 180,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 7,
+      "schoenflies": "C2'(60°)",
+      "seitz": "(C2,60|0)",
+      "matrix": [
+        [-0.5, 0.8660254037844386, 0.0],
+        [0.8660254037844386, 0.5, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "rotation",
+      "element_order": 2,
+      "inverse": 7,
+      "axis": [0.5, 0.8660254037844386, 0.0],
+      "rotation_angle_deg": 180,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 8,
+      "schoenflies": "C2'(120°)",
+      "seitz": "(C2,120|0)",
+      "matrix": [
+        [-0.5, -0.8660254037844386, 0.0],
+        [-0.8660254037844386, 0.5, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "rotation",
+      "element_order": 2,
+      "inverse": 8,
+      "axis": [-0.5, 0.8660254037844386, 0.0],
+      "rotation_angle_deg": 180,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 9,
+      "schoenflies": "C2''(30°)",
+      "seitz": "(C2,30|0)",
+      "matrix": [
+        [0.5, 0.8660254037844386, 0.0],
+        [0.8660254037844386, -0.5, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "rotation",
+      "element_order": 2,
+      "inverse": 9,
+      "axis": [0.8660254037844386, 0.5, 0.0],
+      "rotation_angle_deg": 180,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 10,
+      "schoenflies": "C2''",
+      "seitz": "(C2,90|0)",
+      "matrix": [
+        [-1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "rotation",
+      "element_order": 2,
+      "inverse": 10,
+      "axis": [0.0, 1.0, 0.0],
+      "rotation_angle_deg": 180,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 11,
+      "schoenflies": "C2''(150°)",
+      "seitz": "(C2,150|0)",
+      "matrix": [
+        [0.5, -0.8660254037844386, 0.0],
+        [-0.8660254037844386, -0.5, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "rotation",
+      "element_order": 2,
+      "inverse": 11,
+      "axis": [-0.8660254037844386, 0.5, 0.0],
+      "rotation_angle_deg": 180,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    }
+  ],
+  "multiplication_table": [
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    [1, 2, 3, 4, 5, 0, 9, 10, 11, 7, 8, 6],
+    [2, 3, 4, 5, 0, 1, 7, 8, 6, 10, 11, 9],
+    [3, 4, 5, 0, 1, 2, 10, 11, 9, 8, 6, 7],
+    [4, 5, 0, 1, 2, 3, 8, 6, 7, 11, 9, 10],
+    [5, 0, 1, 2, 3, 4, 11, 9, 10, 6, 7, 8],
+    [6, 11, 8, 10, 7, 9, 0, 4, 2, 5, 3, 1],
+    [7, 9, 6, 11, 8, 10, 2, 0, 4, 1, 5, 3],
+    [8, 10, 7, 9, 6, 11, 4, 2, 0, 3, 1, 5],
+    [9, 6, 11, 8, 10, 7, 1, 5, 3, 0, 4, 2],
+    [10, 7, 9, 6, 11, 8, 3, 1, 5, 2, 0, 4],
+    [11, 8, 10, 7, 9, 6, 5, 3, 1, 4, 2, 0]
+  ],
+  "conjugacy_classes": [
+    [0],
+    [1, 5],
+    [2, 4],
+    [3],
+    [6, 7, 8],
+    [9, 10, 11]
+  ],
+  "conjugacy_class_names": ["E", "2C6", "2C3", "C2", "3C2'", "3C2''"],
+  "center": [0, 3],
+  "commutator_subgroup": [0, 2, 4],
+  "abelianization": "D2",
+  "is_symmorphic": true,
+  "subgroups": [
+    {
+      "schoenflies": "C1",
+      "element_indices": [0],
+      "order": 1,
+      "index_in_parent": 12,
+      "is_normal": true,
+      "is_trivial": true,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      "quotient_group": "D6"
+    },
+    {
+      "schoenflies": "C2(z)",
+      "element_indices": [0, 3],
+      "order": 2,
+      "index_in_parent": 6,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 6, 7, 8],
+      "quotient_group": "D3",
+      "note": "主軸 C2(z) = Z(D6) の非自明元。商群 D6/Z(D6) ≅ D3（D_n/Z(D_n) ≅ D_{n/2}）"
+    },
+    {
+      "schoenflies": "C2'(0°)",
+      "element_indices": [0, 6],
+      "order": 2,
+      "index_in_parent": 6,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3, 4, 5],
+      "quotient_group": null,
+      "note": "x 軸方向の C2'。C6 で C2'(60°), C2'(120°) と共役、非正規"
+    },
+    {
+      "schoenflies": "C2'(60°)",
+      "element_indices": [0, 7],
+      "order": 2,
+      "index_in_parent": 6,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3, 4, 5],
+      "quotient_group": null,
+      "note": "60° 方向の C2'。C6 で共役、非正規"
+    },
+    {
+      "schoenflies": "C2'(120°)",
+      "element_indices": [0, 8],
+      "order": 2,
+      "index_in_parent": 6,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3, 4, 5],
+      "quotient_group": null,
+      "note": "120° 方向の C2'。C6 で共役、非正規"
+    },
+    {
+      "schoenflies": "C2''(30°)",
+      "element_indices": [0, 9],
+      "order": 2,
+      "index_in_parent": 6,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3, 4, 5],
+      "quotient_group": null,
+      "note": "30° 方向の C2''。C6 で C2''(90°), C2''(150°) と共役、非正規"
+    },
+    {
+      "schoenflies": "C2''(90°)",
+      "element_indices": [0, 10],
+      "order": 2,
+      "index_in_parent": 6,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3, 4, 5],
+      "quotient_group": null,
+      "note": "y 軸方向の C2''。C6 で共役、非正規"
+    },
+    {
+      "schoenflies": "C2''(150°)",
+      "element_indices": [0, 11],
+      "order": 2,
+      "index_in_parent": 6,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3, 4, 5],
+      "quotient_group": null,
+      "note": "150° 方向の C2''。C6 で共役、非正規"
+    },
+    {
+      "schoenflies": "C3",
+      "element_indices": [0, 2, 4],
+      "order": 3,
+      "index_in_parent": 4,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 6, 9],
+      "quotient_group": "D2",
+      "note": "主軸 C3 = 交換子部分群。abelianization D6/C3 ≅ D2（Klein four）"
+    },
+    {
+      "schoenflies": "D2",
+      "element_indices": [0, 3, 6, 10],
+      "order": 4,
+      "index_in_parent": 3,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 1, 2],
+      "quotient_group": null,
+      "note": "{E, C2(z), C2'(x), C2''(y)}。z/x/y 軸方向の D2。maximal だが非正規（C6 で D2', D2'' と共役）"
+    },
+    {
+      "schoenflies": "D2'",
+      "element_indices": [0, 3, 7, 11],
+      "order": 4,
+      "index_in_parent": 3,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 1, 2],
+      "quotient_group": null,
+      "note": "{E, C2(z), C2'(60°), C2''(150°)}。非正規・maximal"
+    },
+    {
+      "schoenflies": "D2''",
+      "element_indices": [0, 3, 8, 9],
+      "order": 4,
+      "index_in_parent": 3,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 1, 2],
+      "quotient_group": null,
+      "note": "{E, C2(z), C2'(120°), C2''(30°)}。非正規・maximal"
+    },
+    {
+      "schoenflies": "C6",
+      "element_indices": [0, 1, 2, 3, 4, 5],
+      "order": 6,
+      "index_in_parent": 2,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 6],
+      "quotient_group": "C2",
+      "note": "純回転 C6 部分群（z 軸まわり）。D6/C6 ≅ C2"
+    },
+    {
+      "schoenflies": "D3",
+      "element_indices": [0, 2, 4, 6, 7, 8],
+      "order": 6,
+      "index_in_parent": 2,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 1],
+      "quotient_group": "C2",
+      "note": "{E, C3, C3², C2'(0°), C2'(60°), C2'(120°)} — C2' 型 3 本と C3 の D3"
+    },
+    {
+      "schoenflies": "D3'",
+      "element_indices": [0, 2, 4, 9, 10, 11],
+      "order": 6,
+      "index_in_parent": 2,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 1],
+      "quotient_group": "C2",
+      "note": "{E, C3, C3², C2''(30°), C2''(90°), C2''(150°)} — C2'' 型 3 本と C3 の D3"
+    },
+    {
+      "schoenflies": "D6",
+      "element_indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      "order": 12,
+      "index_in_parent": 1,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": true,
+      "is_maximal": false,
+      "coset_representatives": [0],
+      "quotient_group": "C1"
+    }
+  ],
+  "normal_subgroups": [0, 1, 8, 12, 13, 14, 15]
+}

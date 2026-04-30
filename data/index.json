@@ -180,6 +180,22 @@
       "order": 6,
       "crystal_system": "hexagonal",
       "file": "22_C3h.json"
+    },
+    {
+      "id": 23,
+      "schoenflies": "C6h",
+      "hermann_mauguin": "6/m",
+      "order": 12,
+      "crystal_system": "hexagonal",
+      "file": "23_C6h.json"
+    },
+    {
+      "id": 24,
+      "schoenflies": "D6",
+      "hermann_mauguin": "622",
+      "order": 12,
+      "crystal_system": "hexagonal",
+      "file": "24_D6.json"
     }
   ]
 }
