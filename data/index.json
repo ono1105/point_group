@@ -38,6 +38,30 @@
       "file": "04_Cs.json"
     },
     {
+      "id": 5,
+      "schoenflies": "C2h",
+      "hermann_mauguin": "2/m",
+      "order": 4,
+      "crystal_system": "monoclinic",
+      "file": "05_C2h.json"
+    },
+    {
+      "id": 6,
+      "schoenflies": "D2",
+      "hermann_mauguin": "222",
+      "order": 4,
+      "crystal_system": "orthorhombic",
+      "file": "06_D2.json"
+    },
+    {
+      "id": 7,
+      "schoenflies": "C2v",
+      "hermann_mauguin": "mm2",
+      "order": 4,
+      "crystal_system": "orthorhombic",
+      "file": "07_C2v.json"
+    },
+    {
       "id": 13,
       "schoenflies": "C3v",
       "hermann_mauguin": "3m",
