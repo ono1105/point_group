@@ -62,6 +62,14 @@
       "file": "07_C2v.json"
     },
     {
+      "id": 8,
+      "schoenflies": "D2h",
+      "hermann_mauguin": "mmm",
+      "order": 8,
+      "crystal_system": "orthorhombic",
+      "file": "08_D2h.json"
+    },
+    {
       "id": 13,
       "schoenflies": "C3v",
       "hermann_mauguin": "3m",
