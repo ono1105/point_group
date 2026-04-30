@@ -1,0 +1,314 @@
+{
+  "schoenflies": "D2d",
+  "hermann_mauguin": "-42m",
+  "crystal_system": "tetragonal",
+  "order": 8,
+  "abelian": false,
+  "generators": [1, 4],
+  "matrix_representation": "float",
+  "convention": {
+    "multiplication": "left-acting: table[i][j] = k means M_i @ M_j = M_k (g_j applied first)",
+    "matrix_basis": "orthonormal Cartesian, principal axis along z",
+    "s4_axis_orientation": "S4 軸を z 軸に取る（90° 回転 + xy 鏡映）。S4² = C2 が proper",
+    "u2_axes_orientation": "C2' ‖ x, C2'' ‖ y（座標軸方向、HM \"-42m\" の \"2\"）",
+    "mirror_orientation": "σd は対角面で C2', C2'' を二等分: σd は (1,-1,0) を法線とし (110) 方向と z 軸を含む面、σd' は (1,1,0) を法線とし (1-10) 方向と z 軸を含む面。HM の \"m\" が σd 群"
+  },
+  "element_to_index": {
+    "E": 0,
+    "S4": 1,
+    "C2": 2,
+    "S4^3": 3,
+    "C2'": 4,
+    "C2''": 5,
+    "σd": 6,
+    "σd'": 7
+  },
+  "elements": [
+    {
+      "index": 0,
+      "schoenflies": "E",
+      "seitz": "(E|0)",
+      "matrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "identity",
+      "element_order": 1,
+      "inverse": 0,
+      "axis": null,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 1,
+      "schoenflies": "S4",
+      "seitz": "(S4z|0)",
+      "matrix": [
+        [0.0, -1.0, 0.0],
+        [1.0, 0.0, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "improper_rotation",
+      "element_order": 4,
+      "inverse": 3,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 90,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 2,
+      "schoenflies": "C2",
+      "seitz": "(C2z|0)",
+      "matrix": [
+        [-1.0, 0.0, 0.0],
+        [0.0, -1.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 2,
+      "inverse": 2,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 180,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 3,
+      "schoenflies": "S4^3",
+      "seitz": "(S4z^3|0)",
+      "matrix": [
+        [0.0, 1.0, 0.0],
+        [-1.0, 0.0, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "improper_rotation",
+      "element_order": 4,
+      "inverse": 1,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 270,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 4,
+      "schoenflies": "C2'",
+      "seitz": "(C2x|0)",
+      "matrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, -1.0, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "rotation",
+      "element_order": 2,
+      "inverse": 4,
+      "axis": [1.0, 0.0, 0.0],
+      "rotation_angle_deg": 180,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 5,
+      "schoenflies": "C2''",
+      "seitz": "(C2y|0)",
+      "matrix": [
+        [-1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "rotation",
+      "element_order": 2,
+      "inverse": 5,
+      "axis": [0.0, 1.0, 0.0],
+      "rotation_angle_deg": 180,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 6,
+      "schoenflies": "σd",
+      "seitz": "(σd|0)",
+      "matrix": [
+        [0.0, 1.0, 0.0],
+        [1.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "reflection",
+      "element_order": 2,
+      "inverse": 6,
+      "axis": null,
+      "plane_normal": [0.7071067811865476, -0.7071067811865476, 0.0],
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 7,
+      "schoenflies": "σd'",
+      "seitz": "(σd'|0)",
+      "matrix": [
+        [0.0, -1.0, 0.0],
+        [-1.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "reflection",
+      "element_order": 2,
+      "inverse": 7,
+      "axis": null,
+      "plane_normal": [0.7071067811865476, 0.7071067811865476, 0.0],
+      "translation": [0, 0, 0]
+    }
+  ],
+  "multiplication_table": [
+    [0, 1, 2, 3, 4, 5, 6, 7],
+    [1, 2, 3, 0, 6, 7, 5, 4],
+    [2, 3, 0, 1, 5, 4, 7, 6],
+    [3, 0, 1, 2, 7, 6, 4, 5],
+    [4, 7, 5, 6, 0, 2, 3, 1],
+    [5, 6, 4, 7, 2, 0, 1, 3],
+    [6, 4, 7, 5, 1, 3, 0, 2],
+    [7, 5, 6, 4, 3, 1, 2, 0]
+  ],
+  "conjugacy_classes": [
+    [0],
+    [1, 3],
+    [2],
+    [4, 5],
+    [6, 7]
+  ],
+  "conjugacy_class_names": ["E", "2S4", "C2", "2C2'", "2σd"],
+  "center": [0, 2],
+  "commutator_subgroup": [0, 2],
+  "abelianization": "D2",
+  "is_symmorphic": true,
+  "subgroups": [
+    {
+      "schoenflies": "C1",
+      "element_indices": [0],
+      "order": 1,
+      "index_in_parent": 8,
+      "is_normal": true,
+      "is_trivial": true,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3, 4, 5, 6, 7],
+      "quotient_group": "D2d"
+    },
+    {
+      "schoenflies": "C2(z)",
+      "element_indices": [0, 2],
+      "order": 2,
+      "index_in_parent": 4,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 4, 6],
+      "quotient_group": "D2",
+      "note": "主軸 C2 = S4²。中心 = 交換子部分群"
+    },
+    {
+      "schoenflies": "C2(x)",
+      "element_indices": [0, 4],
+      "order": 2,
+      "index_in_parent": 4,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3],
+      "quotient_group": null,
+      "note": "x 軸まわりの C2'。S4 で C2(y) と共役、正規でないため商群は群にならない"
+    },
+    {
+      "schoenflies": "C2(y)",
+      "element_indices": [0, 5],
+      "order": 2,
+      "index_in_parent": 4,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3],
+      "quotient_group": null,
+      "note": "y 軸まわりの C2''。S4 で C2(x) と共役、正規でないため商群は群にならない"
+    },
+    {
+      "schoenflies": "Cs(σd)",
+      "element_indices": [0, 6],
+      "order": 2,
+      "index_in_parent": 4,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3],
+      "quotient_group": null,
+      "note": "対角鏡面のみ。S4 で σd' と共役、正規でないため商群は群にならない"
+    },
+    {
+      "schoenflies": "Cs(σd')",
+      "element_indices": [0, 7],
+      "order": 2,
+      "index_in_parent": 4,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3],
+      "quotient_group": null,
+      "note": "対角鏡面のみ。S4 で σd と共役、正規でないため商群は群にならない"
+    },
+    {
+      "schoenflies": "S4",
+      "element_indices": [0, 1, 2, 3],
+      "order": 4,
+      "index_in_parent": 2,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 4],
+      "quotient_group": "C2",
+      "note": "S4 巡回部分群（z 軸まわり）。index 2 なので正規"
+    },
+    {
+      "schoenflies": "D2",
+      "element_indices": [0, 2, 4, 5],
+      "order": 4,
+      "index_in_parent": 2,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 1],
+      "quotient_group": "C2",
+      "note": "{E, C2, C2', C2''}。3 本の互いに直交する C2 軸（座標軸方向）からなる純回転 D2"
+    },
+    {
+      "schoenflies": "C2v",
+      "element_indices": [0, 2, 6, 7],
+      "order": 4,
+      "index_in_parent": 2,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 1],
+      "quotient_group": "C2",
+      "note": "{E, C2, σd, σd'}。主軸 C2 と 2 つの対角鏡面。S4 を落として improper を σd だけに絞った C2v"
+    },
+    {
+      "schoenflies": "D2d",
+      "element_indices": [0, 1, 2, 3, 4, 5, 6, 7],
+      "order": 8,
+      "index_in_parent": 1,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": true,
+      "is_maximal": false,
+      "coset_representatives": [0],
+      "quotient_group": "C1"
+    }
+  ],
+  "normal_subgroups": [0, 1, 6, 7, 8, 9]
+}

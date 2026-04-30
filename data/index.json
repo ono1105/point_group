@@ -102,6 +102,30 @@
       "file": "12_D4.json"
     },
     {
+      "id": 13,
+      "schoenflies": "C4v",
+      "hermann_mauguin": "4mm",
+      "order": 8,
+      "crystal_system": "tetragonal",
+      "file": "13_C4v.json"
+    },
+    {
+      "id": 14,
+      "schoenflies": "D2d",
+      "hermann_mauguin": "-42m",
+      "order": 8,
+      "crystal_system": "tetragonal",
+      "file": "14_D2d.json"
+    },
+    {
+      "id": 15,
+      "schoenflies": "D4h",
+      "hermann_mauguin": "4/mmm",
+      "order": 16,
+      "crystal_system": "tetragonal",
+      "file": "15_D4h.json"
+    },
+    {
       "id": 19,
       "schoenflies": "C3v",
       "hermann_mauguin": "3m",
