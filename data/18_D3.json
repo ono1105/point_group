@@ -1,0 +1,224 @@
+{
+  "schoenflies": "D3",
+  "hermann_mauguin": "32",
+  "crystal_system": "trigonal",
+  "order": 6,
+  "abelian": false,
+  "generators": [1, 3],
+  "matrix_representation": "float",
+  "convention": {
+    "multiplication": "left-acting: table[i][j] = k means M_i @ M_j = M_k (g_j applied first)",
+    "matrix_basis": "orthonormal Cartesian, principal axis along z",
+    "c3_axis_orientation": "C3 軸を z 軸に取る（反時計回り 120°）",
+    "u2_axes_orientation": "C2' を x 軸方向に取る。C2'' は (cos 120°, sin 120°, 0) = (-0.5, √3/2, 0) 軸まわり、C2''' は (cos 240°, sin 240°, 0) = (-0.5, -√3/2, 0) 軸まわり。3 本の C2 軸は z 軸まわりに 120° 間隔で配置",
+    "structure": "D3 ≅ C3v（抽象群として同型）。違いは表現: D3 はすべて proper rotation、C3v は 3 つを reflection に置換"
+  },
+  "element_to_index": {
+    "E": 0,
+    "C3": 1,
+    "C3^2": 2,
+    "C2'": 3,
+    "C2''": 4,
+    "C2'''": 5
+  },
+  "elements": [
+    {
+      "index": 0,
+      "schoenflies": "E",
+      "seitz": "(E|0)",
+      "matrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "identity",
+      "element_order": 1,
+      "inverse": 0,
+      "axis": null,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 1,
+      "schoenflies": "C3",
+      "seitz": "(C3z|0)",
+      "matrix": [
+        [-0.5, -0.8660254037844386, 0.0],
+        [0.8660254037844386, -0.5, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 3,
+      "inverse": 2,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 120,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 2,
+      "schoenflies": "C3^2",
+      "seitz": "(C3z^2|0)",
+      "matrix": [
+        [-0.5, 0.8660254037844386, 0.0],
+        [-0.8660254037844386, -0.5, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 3,
+      "inverse": 1,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 240,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 3,
+      "schoenflies": "C2'",
+      "seitz": "(C2x|0)",
+      "matrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, -1.0, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "rotation",
+      "element_order": 2,
+      "inverse": 3,
+      "axis": [1.0, 0.0, 0.0],
+      "rotation_angle_deg": 180,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 4,
+      "schoenflies": "C2''",
+      "seitz": "(C2,120|0)",
+      "matrix": [
+        [-0.5, -0.8660254037844386, 0.0],
+        [-0.8660254037844386, 0.5, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "rotation",
+      "element_order": 2,
+      "inverse": 4,
+      "axis": [-0.5, 0.8660254037844386, 0.0],
+      "rotation_angle_deg": 180,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 5,
+      "schoenflies": "C2'''",
+      "seitz": "(C2,240|0)",
+      "matrix": [
+        [-0.5, 0.8660254037844386, 0.0],
+        [0.8660254037844386, 0.5, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "rotation",
+      "element_order": 2,
+      "inverse": 5,
+      "axis": [-0.5, -0.8660254037844386, 0.0],
+      "rotation_angle_deg": 180,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    }
+  ],
+  "multiplication_table": [
+    [0, 1, 2, 3, 4, 5],
+    [1, 2, 0, 5, 3, 4],
+    [2, 0, 1, 4, 5, 3],
+    [3, 4, 5, 0, 1, 2],
+    [4, 5, 3, 2, 0, 1],
+    [5, 3, 4, 1, 2, 0]
+  ],
+  "conjugacy_classes": [
+    [0],
+    [1, 2],
+    [3, 4, 5]
+  ],
+  "conjugacy_class_names": ["E", "2C3", "3C2'"],
+  "center": [0],
+  "commutator_subgroup": [0, 1, 2],
+  "abelianization": "C2",
+  "is_symmorphic": true,
+  "subgroups": [
+    {
+      "schoenflies": "C1",
+      "element_indices": [0],
+      "order": 1,
+      "index_in_parent": 6,
+      "is_normal": true,
+      "is_trivial": true,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3, 4, 5],
+      "quotient_group": "D3"
+    },
+    {
+      "schoenflies": "C2(x)",
+      "element_indices": [0, 3],
+      "order": 2,
+      "index_in_parent": 3,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2],
+      "quotient_group": null,
+      "note": "x 軸まわりの C2'。C3 で他の 2 本と共役、正規でないため商群は群にならない"
+    },
+    {
+      "schoenflies": "C2(120)",
+      "element_indices": [0, 4],
+      "order": 2,
+      "index_in_parent": 3,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2],
+      "quotient_group": null,
+      "note": "(cos 120°, sin 120°, 0) 軸まわりの C2''。C3 で他の 2 本と共役、正規でないため商群は群にならない"
+    },
+    {
+      "schoenflies": "C2(240)",
+      "element_indices": [0, 5],
+      "order": 2,
+      "index_in_parent": 3,
+      "is_normal": false,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2],
+      "quotient_group": null,
+      "note": "(cos 240°, sin 240°, 0) 軸まわりの C2'''。C3 で他の 2 本と共役、正規でないため商群は群にならない"
+    },
+    {
+      "schoenflies": "C3",
+      "element_indices": [0, 1, 2],
+      "order": 3,
+      "index_in_parent": 2,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 3],
+      "quotient_group": "C2",
+      "note": "主軸まわりの C3 = 交換子部分群。商群 D3/[G,G] = abelianization ≅ C2"
+    },
+    {
+      "schoenflies": "D3",
+      "element_indices": [0, 1, 2, 3, 4, 5],
+      "order": 6,
+      "index_in_parent": 1,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": true,
+      "is_maximal": false,
+      "coset_representatives": [0],
+      "quotient_group": "C1"
+    }
+  ],
+  "normal_subgroups": [0, 4, 5]
+}

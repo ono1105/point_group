@@ -1,0 +1,113 @@
+{
+  "schoenflies": "C3",
+  "hermann_mauguin": "3",
+  "crystal_system": "trigonal",
+  "order": 3,
+  "abelian": true,
+  "generators": [1],
+  "matrix_representation": "float",
+  "convention": {
+    "multiplication": "left-acting: table[i][j] = k means M_i @ M_j = M_k (g_j applied first)",
+    "matrix_basis": "orthonormal Cartesian, principal axis along z",
+    "c3_axis_orientation": "C3 軸を z 軸に取る（反時計回り 120°）"
+  },
+  "element_to_index": {
+    "E": 0,
+    "C3": 1,
+    "C3^2": 2
+  },
+  "elements": [
+    {
+      "index": 0,
+      "schoenflies": "E",
+      "seitz": "(E|0)",
+      "matrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "identity",
+      "element_order": 1,
+      "inverse": 0,
+      "axis": null,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 1,
+      "schoenflies": "C3",
+      "seitz": "(C3z|0)",
+      "matrix": [
+        [-0.5, -0.8660254037844386, 0.0],
+        [0.8660254037844386, -0.5, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 3,
+      "inverse": 2,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 120,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 2,
+      "schoenflies": "C3^2",
+      "seitz": "(C3z^2|0)",
+      "matrix": [
+        [-0.5, 0.8660254037844386, 0.0],
+        [-0.8660254037844386, -0.5, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 3,
+      "inverse": 1,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 240,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    }
+  ],
+  "multiplication_table": [
+    [0, 1, 2],
+    [1, 2, 0],
+    [2, 0, 1]
+  ],
+  "conjugacy_classes": [
+    [0],
+    [1],
+    [2]
+  ],
+  "conjugacy_class_names": ["E", "C3", "C3^2"],
+  "center": [0, 1, 2],
+  "commutator_subgroup": [0],
+  "abelianization": "C3",
+  "is_symmorphic": true,
+  "subgroups": [
+    {
+      "schoenflies": "C1",
+      "element_indices": [0],
+      "order": 1,
+      "index_in_parent": 3,
+      "is_normal": true,
+      "is_trivial": true,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2],
+      "quotient_group": "C3"
+    },
+    {
+      "schoenflies": "C3",
+      "element_indices": [0, 1, 2],
+      "order": 3,
+      "index_in_parent": 1,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": true,
+      "is_maximal": false,
+      "coset_representatives": [0],
+      "quotient_group": "C1"
+    }
+  ],
+  "normal_subgroups": [0, 1]
+}

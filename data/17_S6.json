@@ -1,0 +1,199 @@
+{
+  "schoenflies": "S6",
+  "hermann_mauguin": "-3",
+  "crystal_system": "trigonal",
+  "order": 6,
+  "abelian": true,
+  "generators": [1],
+  "matrix_representation": "float",
+  "convention": {
+    "multiplication": "left-acting: table[i][j] = k means M_i @ M_j = M_k (g_j applied first)",
+    "matrix_basis": "orthonormal Cartesian, principal axis along z",
+    "s6_axis_orientation": "S6 軸を z 軸に取る。S6 = σh ∘ R_z(60°)。要素は S6 の冪で並べる: S6² = C3 (proper), S6³ = i (proper not, but inversion = C2 ∘ σh の合成と同値), S6⁴ = C3², S6⁵ = S6⁻¹",
+    "structure": "S6 ≅ Ci × C3（直積）。abelian、巡回群（C6 と抽象同型）"
+  },
+  "element_to_index": {
+    "E": 0,
+    "S6": 1,
+    "C3": 2,
+    "i": 3,
+    "C3^2": 4,
+    "S6^5": 5
+  },
+  "elements": [
+    {
+      "index": 0,
+      "schoenflies": "E",
+      "seitz": "(E|0)",
+      "matrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "identity",
+      "element_order": 1,
+      "inverse": 0,
+      "axis": null,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 1,
+      "schoenflies": "S6",
+      "seitz": "(S6z|0)",
+      "matrix": [
+        [0.5, -0.8660254037844386, 0.0],
+        [0.8660254037844386, 0.5, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "improper_rotation",
+      "element_order": 6,
+      "inverse": 5,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 60,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 2,
+      "schoenflies": "C3",
+      "seitz": "(C3z|0)",
+      "matrix": [
+        [-0.5, -0.8660254037844386, 0.0],
+        [0.8660254037844386, -0.5, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 3,
+      "inverse": 4,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 120,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 3,
+      "schoenflies": "i",
+      "seitz": "(i|0)",
+      "matrix": [
+        [-1.0, 0.0, 0.0],
+        [0.0, -1.0, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "inversion",
+      "element_order": 2,
+      "inverse": 3,
+      "axis": null,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 4,
+      "schoenflies": "C3^2",
+      "seitz": "(C3z^2|0)",
+      "matrix": [
+        [-0.5, 0.8660254037844386, 0.0],
+        [-0.8660254037844386, -0.5, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 3,
+      "inverse": 2,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 240,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 5,
+      "schoenflies": "S6^5",
+      "seitz": "(S6z^5|0)",
+      "matrix": [
+        [0.5, 0.8660254037844386, 0.0],
+        [-0.8660254037844386, 0.5, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "improper_rotation",
+      "element_order": 6,
+      "inverse": 1,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 300,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    }
+  ],
+  "multiplication_table": [
+    [0, 1, 2, 3, 4, 5],
+    [1, 2, 3, 4, 5, 0],
+    [2, 3, 4, 5, 0, 1],
+    [3, 4, 5, 0, 1, 2],
+    [4, 5, 0, 1, 2, 3],
+    [5, 0, 1, 2, 3, 4]
+  ],
+  "conjugacy_classes": [
+    [0],
+    [1],
+    [2],
+    [3],
+    [4],
+    [5]
+  ],
+  "conjugacy_class_names": ["E", "S6", "C3", "i", "C3^2", "S6^5"],
+  "center": [0, 1, 2, 3, 4, 5],
+  "commutator_subgroup": [0],
+  "abelianization": "S6",
+  "is_symmorphic": true,
+  "subgroups": [
+    {
+      "schoenflies": "C1",
+      "element_indices": [0],
+      "order": 1,
+      "index_in_parent": 6,
+      "is_normal": true,
+      "is_trivial": true,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3, 4, 5],
+      "quotient_group": "S6"
+    },
+    {
+      "schoenflies": "Ci",
+      "element_indices": [0, 3],
+      "order": 2,
+      "index_in_parent": 3,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 1, 2],
+      "quotient_group": "C3",
+      "note": "i = S6³。S6 ≅ Ci × C3 の Ci 因子。商群は純回転 C3"
+    },
+    {
+      "schoenflies": "C3",
+      "element_indices": [0, 2, 4],
+      "order": 3,
+      "index_in_parent": 2,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 1],
+      "quotient_group": "C2",
+      "note": "純回転部分群（improper を全部落とした）。S6/C3 ≅ C2（非自明剰余類の代表は i）"
+    },
+    {
+      "schoenflies": "S6",
+      "element_indices": [0, 1, 2, 3, 4, 5],
+      "order": 6,
+      "index_in_parent": 1,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": true,
+      "is_maximal": false,
+      "coset_representatives": [0],
+      "quotient_group": "C1"
+    }
+  ],
+  "normal_subgroups": [0, 1, 2, 3]
+}

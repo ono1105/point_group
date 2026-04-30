@@ -126,6 +126,30 @@
       "file": "15_D4h.json"
     },
     {
+      "id": 16,
+      "schoenflies": "C3",
+      "hermann_mauguin": "3",
+      "order": 3,
+      "crystal_system": "trigonal",
+      "file": "16_C3.json"
+    },
+    {
+      "id": 17,
+      "schoenflies": "S6",
+      "hermann_mauguin": "-3",
+      "order": 6,
+      "crystal_system": "trigonal",
+      "file": "17_S6.json"
+    },
+    {
+      "id": 18,
+      "schoenflies": "D3",
+      "hermann_mauguin": "32",
+      "order": 6,
+      "crystal_system": "trigonal",
+      "file": "18_D3.json"
+    },
+    {
       "id": 19,
       "schoenflies": "C3v",
       "hermann_mauguin": "3m",
