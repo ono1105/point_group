@@ -1,0 +1,100 @@
+{
+  "schoenflies": "C2",
+  "hermann_mauguin": "2",
+  "crystal_system": "monoclinic",
+  "order": 2,
+  "abelian": true,
+  "generators": [1],
+
+  "matrix_representation": "float",
+  "convention": {
+    "multiplication": "left-acting: table[i][j] = k means M_i @ M_j = M_k (g_j applied first)",
+    "matrix_basis": "orthonormal Cartesian, principal axis along z",
+    "c2_axis_orientation": "C2 軸を z 軸に取る（c-unique 設定）"
+  },
+
+  "element_to_index": {
+    "E": 0,
+    "C2": 1
+  },
+
+  "elements": [
+    {
+      "index": 0,
+      "schoenflies": "E",
+      "seitz": "(E|0)",
+      "matrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "identity",
+      "element_order": 1,
+      "inverse": 0,
+      "axis": null,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 1,
+      "schoenflies": "C2",
+      "seitz": "(C2z|0)",
+      "matrix": [
+        [-1.0,  0.0, 0.0],
+        [ 0.0, -1.0, 0.0],
+        [ 0.0,  0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 2,
+      "inverse": 1,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 180,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    }
+  ],
+
+  "multiplication_table": [
+    [0, 1],
+    [1, 0]
+  ],
+
+  "conjugacy_classes": [
+    [0],
+    [1]
+  ],
+  "conjugacy_class_names": ["E", "C2"],
+
+  "center": [0, 1],
+  "commutator_subgroup": [0],
+  "abelianization": "C2",
+  "is_symmorphic": true,
+
+  "subgroups": [
+    {
+      "schoenflies": "C1",
+      "element_indices": [0],
+      "order": 1,
+      "index_in_parent": 2,
+      "is_normal": true,
+      "is_trivial": true,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1],
+      "quotient_group": "C2"
+    },
+    {
+      "schoenflies": "C2",
+      "element_indices": [0, 1],
+      "order": 2,
+      "index_in_parent": 1,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": true,
+      "is_maximal": false,
+      "coset_representatives": [0],
+      "quotient_group": "C1"
+    }
+  ],
+  "normal_subgroups": [0, 1]
+}
