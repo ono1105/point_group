@@ -1,0 +1,290 @@
+{
+  "schoenflies": "C4h",
+  "hermann_mauguin": "4/m",
+  "crystal_system": "tetragonal",
+  "order": 8,
+  "abelian": true,
+  "generators": [1, 4],
+  "matrix_representation": "float",
+  "convention": {
+    "multiplication": "left-acting: table[i][j] = k means M_i @ M_j = M_k (g_j applied first)",
+    "matrix_basis": "orthonormal Cartesian, principal axis along z",
+    "c4_axis_orientation": "C4 軸を z 軸に取る（反時計回り 90°）",
+    "mirror_orientation": "σh は xy 平面（法線 [0,0,1]）。C4h ≅ C4 × Ci の直積構造で、improper 部分は i, S4, σh, S4^3"
+  },
+  "element_to_index": {
+    "E": 0,
+    "C4": 1,
+    "C2": 2,
+    "C4^3": 3,
+    "i": 4,
+    "S4": 5,
+    "σh": 6,
+    "S4^3": 7
+  },
+  "elements": [
+    {
+      "index": 0,
+      "schoenflies": "E",
+      "seitz": "(E|0)",
+      "matrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "identity",
+      "element_order": 1,
+      "inverse": 0,
+      "axis": null,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 1,
+      "schoenflies": "C4",
+      "seitz": "(C4z|0)",
+      "matrix": [
+        [0.0, -1.0, 0.0],
+        [1.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 4,
+      "inverse": 3,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 90,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 2,
+      "schoenflies": "C2",
+      "seitz": "(C2z|0)",
+      "matrix": [
+        [-1.0, 0.0, 0.0],
+        [0.0, -1.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 2,
+      "inverse": 2,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 180,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 3,
+      "schoenflies": "C4^3",
+      "seitz": "(C4z^3|0)",
+      "matrix": [
+        [0.0, 1.0, 0.0],
+        [-1.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 4,
+      "inverse": 1,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 270,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 4,
+      "schoenflies": "i",
+      "seitz": "(i|0)",
+      "matrix": [
+        [-1.0, 0.0, 0.0],
+        [0.0, -1.0, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "inversion",
+      "element_order": 2,
+      "inverse": 4,
+      "axis": null,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 5,
+      "schoenflies": "S4",
+      "seitz": "(S4z|0)",
+      "matrix": [
+        [0.0, -1.0, 0.0],
+        [1.0, 0.0, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "improper_rotation",
+      "element_order": 4,
+      "inverse": 7,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 90,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 6,
+      "schoenflies": "σh",
+      "seitz": "(σh|0)",
+      "matrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "reflection",
+      "element_order": 2,
+      "inverse": 6,
+      "axis": null,
+      "plane_normal": [0.0, 0.0, 1.0],
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 7,
+      "schoenflies": "S4^3",
+      "seitz": "(S4z^3|0)",
+      "matrix": [
+        [0.0, 1.0, 0.0],
+        [-1.0, 0.0, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "improper_rotation",
+      "element_order": 4,
+      "inverse": 5,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 270,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    }
+  ],
+  "multiplication_table": [
+    [0, 1, 2, 3, 4, 5, 6, 7],
+    [1, 2, 3, 0, 7, 4, 5, 6],
+    [2, 3, 0, 1, 6, 7, 4, 5],
+    [3, 0, 1, 2, 5, 6, 7, 4],
+    [4, 7, 6, 5, 0, 3, 2, 1],
+    [5, 4, 7, 6, 3, 2, 1, 0],
+    [6, 5, 4, 7, 2, 1, 0, 3],
+    [7, 6, 5, 4, 1, 0, 3, 2]
+  ],
+  "conjugacy_classes": [
+    [0],
+    [1],
+    [2],
+    [3],
+    [4],
+    [5],
+    [6],
+    [7]
+  ],
+  "conjugacy_class_names": ["E", "C4", "C2", "C4^3", "i", "S4", "σh", "S4^3"],
+  "center": [0, 1, 2, 3, 4, 5, 6, 7],
+  "commutator_subgroup": [0],
+  "abelianization": "C4h",
+  "is_symmorphic": true,
+  "subgroups": [
+    {
+      "schoenflies": "C1",
+      "element_indices": [0],
+      "order": 1,
+      "index_in_parent": 8,
+      "is_normal": true,
+      "is_trivial": true,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3, 4, 5, 6, 7],
+      "quotient_group": "C4h"
+    },
+    {
+      "schoenflies": "C2",
+      "element_indices": [0, 2],
+      "order": 2,
+      "index_in_parent": 4,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 4, 5],
+      "quotient_group": "D2",
+      "note": "z 軸まわりの C2（中心の非自明部分）。商群 C4h/{E,C2} ≅ D2（Klein four）"
+    },
+    {
+      "schoenflies": "Ci",
+      "element_indices": [0, 4],
+      "order": 2,
+      "index_in_parent": 4,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3],
+      "quotient_group": "C4",
+      "note": "C4h ≅ C4 × Ci の Ci 因子。商群は C4"
+    },
+    {
+      "schoenflies": "Cs(σh)",
+      "element_indices": [0, 6],
+      "order": 2,
+      "index_in_parent": 4,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3],
+      "quotient_group": "C4",
+      "note": "xy 鏡面のみからなる Cs。可換群なので正規"
+    },
+    {
+      "schoenflies": "C4",
+      "element_indices": [0, 1, 2, 3],
+      "order": 4,
+      "index_in_parent": 2,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 4],
+      "quotient_group": "C2",
+      "note": "純回転部分群（improper を全部落とした商）。C4h ≅ C4 × Ci の C4 因子"
+    },
+    {
+      "schoenflies": "C2h",
+      "element_indices": [0, 2, 4, 6],
+      "order": 4,
+      "index_in_parent": 2,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 1],
+      "quotient_group": "C2",
+      "note": "{E, C2, i, σh}。C4 を落とすと C2h に縮約"
+    },
+    {
+      "schoenflies": "S4",
+      "element_indices": [0, 2, 5, 7],
+      "order": 4,
+      "index_in_parent": 2,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 1],
+      "quotient_group": "C2",
+      "note": "{E, C2, S4, S4^3}。S4² = C2 が proper、S4·S4^3 = E"
+    },
+    {
+      "schoenflies": "C4h",
+      "element_indices": [0, 1, 2, 3, 4, 5, 6, 7],
+      "order": 8,
+      "index_in_parent": 1,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": true,
+      "is_maximal": false,
+      "coset_representatives": [0],
+      "quotient_group": "C1"
+    }
+  ],
+  "normal_subgroups": [0, 1, 2, 3, 4, 5, 6, 7]
+}

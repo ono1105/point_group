@@ -86,6 +86,22 @@
       "file": "10_S4.json"
     },
     {
+      "id": 11,
+      "schoenflies": "C4h",
+      "hermann_mauguin": "4/m",
+      "order": 8,
+      "crystal_system": "tetragonal",
+      "file": "11_C4h.json"
+    },
+    {
+      "id": 12,
+      "schoenflies": "D4",
+      "hermann_mauguin": "422",
+      "order": 8,
+      "crystal_system": "tetragonal",
+      "file": "12_D4.json"
+    },
+    {
       "id": 19,
       "schoenflies": "C3v",
       "hermann_mauguin": "3m",
