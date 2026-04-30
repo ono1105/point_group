@@ -156,6 +156,30 @@
       "order": 6,
       "crystal_system": "trigonal",
       "file": "19_C3v.json"
+    },
+    {
+      "id": 20,
+      "schoenflies": "D3d",
+      "hermann_mauguin": "-3m",
+      "order": 12,
+      "crystal_system": "trigonal",
+      "file": "20_D3d.json"
+    },
+    {
+      "id": 21,
+      "schoenflies": "C6",
+      "hermann_mauguin": "6",
+      "order": 6,
+      "crystal_system": "hexagonal",
+      "file": "21_C6.json"
+    },
+    {
+      "id": 22,
+      "schoenflies": "C3h",
+      "hermann_mauguin": "-6",
+      "order": 6,
+      "crystal_system": "hexagonal",
+      "file": "22_C3h.json"
     }
   ]
 }

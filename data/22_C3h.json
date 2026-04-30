@@ -1,0 +1,200 @@
+{
+  "schoenflies": "C3h",
+  "hermann_mauguin": "-6",
+  "crystal_system": "hexagonal",
+  "order": 6,
+  "abelian": true,
+  "generators": [4],
+  "matrix_representation": "float",
+  "convention": {
+    "multiplication": "left-acting: table[i][j] = k means M_i @ M_j = M_k (g_j applied first)",
+    "matrix_basis": "orthonormal Cartesian, principal axis along z",
+    "c3_axis_orientation": "C3 軸を z 軸に取る（反時計回り 120°）",
+    "mirror_orientation": "σh は xy 平面（法線 [0,0,1]）",
+    "structure": "C3h ≅ C3 × Cs（直積）。生成元 S3 = σh·C3 は位数 6 の improper rotation。冪: S3¹=index4, S3²=C3²=index2, S3³=σh=index3, S3⁴=C3=index1, S3⁵=index5。HM記号 -6 の 6-bar はこの S3 に対応。S6 群（inversion を含む）と異なり C3h は σh を持つが i を持たない"
+  },
+  "element_to_index": {
+    "E": 0,
+    "C3": 1,
+    "C3^2": 2,
+    "σh": 3,
+    "S3": 4,
+    "S3^5": 5
+  },
+  "elements": [
+    {
+      "index": 0,
+      "schoenflies": "E",
+      "seitz": "(E|0)",
+      "matrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "identity",
+      "element_order": 1,
+      "inverse": 0,
+      "axis": null,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 1,
+      "schoenflies": "C3",
+      "seitz": "(C3z|0)",
+      "matrix": [
+        [-0.5, -0.8660254037844386, 0.0],
+        [0.8660254037844386, -0.5, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 3,
+      "inverse": 2,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 120,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 2,
+      "schoenflies": "C3^2",
+      "seitz": "(C3z^2|0)",
+      "matrix": [
+        [-0.5, 0.8660254037844386, 0.0],
+        [-0.8660254037844386, -0.5, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "type": "rotation",
+      "element_order": 3,
+      "inverse": 1,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 240,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 3,
+      "schoenflies": "σh",
+      "seitz": "(σh|0)",
+      "matrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "reflection",
+      "element_order": 2,
+      "inverse": 3,
+      "axis": null,
+      "plane_normal": [0.0, 0.0, 1.0],
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 4,
+      "schoenflies": "S3",
+      "seitz": "(S3z|0)",
+      "matrix": [
+        [-0.5, -0.8660254037844386, 0.0],
+        [0.8660254037844386, -0.5, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "improper_rotation",
+      "element_order": 6,
+      "inverse": 5,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 120,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    },
+    {
+      "index": 5,
+      "schoenflies": "S3^5",
+      "seitz": "(S3z^5|0)",
+      "matrix": [
+        [-0.5, 0.8660254037844386, 0.0],
+        [-0.8660254037844386, -0.5, 0.0],
+        [0.0, 0.0, -1.0]
+      ],
+      "type": "improper_rotation",
+      "element_order": 6,
+      "inverse": 4,
+      "axis": [0.0, 0.0, 1.0],
+      "rotation_angle_deg": 240,
+      "plane_normal": null,
+      "translation": [0, 0, 0]
+    }
+  ],
+  "multiplication_table": [
+    [0, 1, 2, 3, 4, 5],
+    [1, 2, 0, 4, 5, 3],
+    [2, 0, 1, 5, 3, 4],
+    [3, 4, 5, 0, 1, 2],
+    [4, 5, 3, 1, 2, 0],
+    [5, 3, 4, 2, 0, 1]
+  ],
+  "conjugacy_classes": [
+    [0],
+    [1],
+    [2],
+    [3],
+    [4],
+    [5]
+  ],
+  "conjugacy_class_names": ["E", "C3", "C3^2", "σh", "S3", "S3^5"],
+  "center": [0, 1, 2, 3, 4, 5],
+  "commutator_subgroup": [0],
+  "abelianization": "C3h",
+  "is_symmorphic": true,
+  "subgroups": [
+    {
+      "schoenflies": "C1",
+      "element_indices": [0],
+      "order": 1,
+      "index_in_parent": 6,
+      "is_normal": true,
+      "is_trivial": true,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2, 3, 4, 5],
+      "quotient_group": "C3h"
+    },
+    {
+      "schoenflies": "Cs(σh)",
+      "element_indices": [0, 3],
+      "order": 2,
+      "index_in_parent": 3,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": false,
+      "coset_representatives": [0, 1, 2],
+      "quotient_group": "C3",
+      "note": "{E, σh}。C3h ≅ C3 × Cs の Cs 因子。商群 C3h/Cs ≅ C3"
+    },
+    {
+      "schoenflies": "C3",
+      "element_indices": [0, 1, 2],
+      "order": 3,
+      "index_in_parent": 2,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": false,
+      "is_maximal": true,
+      "coset_representatives": [0, 3],
+      "quotient_group": "C2",
+      "note": "純回転部分群。maximal、商群 C3h/C3 ≅ C2（非自明代表は σh）"
+    },
+    {
+      "schoenflies": "C3h",
+      "element_indices": [0, 1, 2, 3, 4, 5],
+      "order": 6,
+      "index_in_parent": 1,
+      "is_normal": true,
+      "is_trivial": false,
+      "is_whole_group": true,
+      "is_maximal": false,
+      "coset_representatives": [0],
+      "quotient_group": "C1"
+    }
+  ],
+  "normal_subgroups": [0, 1, 2, 3]
+}
