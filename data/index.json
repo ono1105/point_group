@@ -236,6 +236,14 @@
       "order": 24,
       "crystal_system": "cubic",
       "file": "29_Th.json"
+    },
+    {
+      "id": 30,
+      "schoenflies": "O",
+      "hermann_mauguin": "432",
+      "order": 24,
+      "crystal_system": "cubic",
+      "file": "30_O.json"
     }
   ]
 }

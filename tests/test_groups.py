@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from loader import list_groups, load_group  # noqa: E402
-from validate import ALL_CHECKS              # noqa: E402
+from validate import ALL_CHECKS, check_index_consistency  # noqa: E402
 
 
 def _all_pairs():
@@ -54,3 +54,32 @@ def test_all_groups_loadable():
         g = load_group(entry["schoenflies"])
         assert g.schoenflies == entry["schoenflies"]
         assert g.order == entry["order"]
+
+
+def test_index_consistency():
+    """index.json と各 JSON ファイル間のグローバル整合性。
+
+    群単位の ALL_CHECKS とは別に、index.json と各 JSON のメタデータが
+    整合しているかをチェックする。
+    """
+    result = check_index_consistency()
+    assert result.ok, (
+        f"index_consistency failed:\n" + "\n".join(result.errors)
+    )
+
+
+def test_group_ids_are_sequential():
+    """index.json の id は 1 から連番でなければならない。"""
+    groups = list_groups()
+    ids = [g["id"] for g in groups]
+    expected = list(range(1, len(ids) + 1))
+    assert ids == expected, (
+        f"id が連番でない: {ids} （期待: {expected}）"
+    )
+
+
+def test_no_duplicate_schoenflies():
+    """index.json 内で schoenflies 名が重複していないこと。"""
+    names = [g["schoenflies"] for g in list_groups()]
+    duplicates = [n for n in set(names) if names.count(n) > 1]
+    assert not duplicates, f"重複している schoenflies 名: {duplicates}"

@@ -547,6 +547,138 @@ def check_element_to_index(g: PointGroup) -> CheckResult:
     return r
 
 
+def check_generators_generate(g: PointGroup) -> CheckResult:
+    """generators から閉包を取ったとき、群全体が生成されるか。
+
+    C1（自明群）の場合は generators が空でよい（{E} 自体が全群）。
+    """
+    r = CheckResult("generators_generate")
+    if not g.generators:
+        # 自明群以外で generators が空なのはエラー
+        if g.order != 1:
+            r.fail(f"generators が空（order {g.order} 群では不正）")
+        return r
+    H = set(g.generators) | {0}
+    changed = True
+    while changed:
+        changed = False
+        new = set()
+        for a in H:
+            for b in H:
+                p = g.multiply(a, b)
+                if p not in H:
+                    new.add(p)
+        if new:
+            H |= new
+            changed = True
+    if H != set(range(g.order)):
+        missing = set(range(g.order)) - H
+        r.fail(
+            f"generators {g.generators} は群全体を生成しない "
+            f"(生成サイズ {len(H)}, 欠けている要素: {sorted(missing)[:10]}"
+            f"{'...' if len(missing) > 10 else ''})"
+        )
+    return r
+
+
+def check_matrix_orthogonal(g: PointGroup, tol: float = 1e-9) -> CheckResult:
+    """各要素の行列が直交行列であり、det = ±1 であるか。
+
+    点群の元はすべて直交変換でなければならない。
+    """
+    r = CheckResult("matrix_orthogonal")
+    eye = np.eye(3)
+    for e in g.elements:
+        M = e.matrix
+        if not np.allclose(M.T @ M, eye, atol=tol):
+            r.fail(
+                f"g_{e.index} ({e.schoenflies}): 直交行列でない (M^T M ≠ I)"
+            )
+        d = float(np.linalg.det(M))
+        if abs(abs(d) - 1) > tol:
+            r.fail(f"g_{e.index} ({e.schoenflies}): |det| ≠ 1 (det={d})")
+    return r
+
+
+def check_type_matches_det(g: PointGroup, tol: float = 1e-9) -> CheckResult:
+    """element の type と行列式の対応:
+        identity / rotation              -> det = +1
+        reflection / inversion / improper_rotation -> det = -1
+
+    （improper_rotation は S_n = σh × C_n、つまり rotoinversion と同義。
+    既存規約に合わせて 'improper_rotation' を採用）
+    """
+    r = CheckResult("type_matches_det")
+    proper_types = {"identity", "rotation"}
+    improper_types = {"reflection", "inversion", "improper_rotation"}
+    for e in g.elements:
+        d = round(float(np.linalg.det(e.matrix)))
+        if e.type in proper_types and d != 1:
+            r.fail(
+                f"g_{e.index} ({e.schoenflies}): type={e.type} だが det={d}"
+            )
+        elif e.type in improper_types and d != -1:
+            r.fail(
+                f"g_{e.index} ({e.schoenflies}): type={e.type} だが det={d}"
+            )
+        elif e.type not in proper_types | improper_types:
+            r.fail(
+                f"g_{e.index} ({e.schoenflies}): 未知の type='{e.type}'"
+            )
+    return r
+
+
+def check_axis_normalization(g: PointGroup, tol: float = 1e-9) -> CheckResult:
+    """axis / plane_normal が単位ベクトル（ノルム 1）として書かれているか。"""
+    r = CheckResult("axis_normalization")
+    for e in g.elements:
+        if e.axis is not None:
+            norm = float(np.linalg.norm(e.axis))
+            if abs(norm - 1.0) > tol:
+                r.fail(
+                    f"g_{e.index} ({e.schoenflies}): axis のノルム "
+                    f"{norm:.6f} ≠ 1（{e.axis}）"
+                )
+        if e.plane_normal is not None:
+            norm = float(np.linalg.norm(e.plane_normal))
+            if abs(norm - 1.0) > tol:
+                r.fail(
+                    f"g_{e.index} ({e.schoenflies}): plane_normal のノルム "
+                    f"{norm:.6f} ≠ 1（{e.plane_normal}）"
+                )
+    return r
+
+
+def check_conjugacy_class_homogeneous(g: PointGroup) -> CheckResult:
+    """同じ共役類の元はすべて同じ element_order を持つ（共役類の不変量）。"""
+    r = CheckResult("conjugacy_class_homogeneous")
+    for cc in g.conjugacy_classes:
+        orders = {g.elements[i].element_order for i in cc}
+        if len(orders) > 1:
+            r.fail(
+                f"共役類 {cc} に異なる element_order の元が混在: {sorted(orders)}"
+            )
+        # 共役類サイズは |G| を割る（軌道-安定子定理の系）
+        if g.order % len(cc) != 0:
+            r.fail(
+                f"共役類 {cc} のサイズ {len(cc)} が order {g.order} を割らない"
+            )
+    return r
+
+
+def check_special_subgroups_listed(g: PointGroup) -> CheckResult:
+    """中心 Z(G) と交換子部分群 [G,G] は subgroups リストに必ず存在する。"""
+    r = CheckResult("special_subgroups_listed")
+    Z = sorted(g.center)
+    C = sorted(g.commutator_subgroup)
+    sub_sets = [sorted(s.element_indices) for s in g.subgroups]
+    if Z not in sub_sets:
+        r.fail(f"中心 Z(G) = {Z} が subgroups リストに無い")
+    if C not in sub_sets:
+        r.fail(f"交換子部分群 [G,G] = {C} が subgroups リストに無い")
+    return r
+
+
 def check_index_consistency() -> CheckResult:
     """data/index.json と各 JSON ファイルの整合性をチェック。
 
@@ -626,7 +758,11 @@ ALL_CHECKS: list[Callable[[PointGroup], CheckResult]] = [
     check_inverse_symmetry,
     check_element_order,
     check_matrix_consistency,
+    check_matrix_orthogonal,
+    check_type_matches_det,
+    check_axis_normalization,
     check_element_to_index,
+    check_generators_generate,
     check_subgroup_identity,
     check_subgroup_order,
     check_subgroup_closure,
@@ -638,10 +774,12 @@ ALL_CHECKS: list[Callable[[PointGroup], CheckResult]] = [
     check_normality_flags,
     check_conjugacy_classes,
     check_conjugacy_partition,
+    check_conjugacy_class_homogeneous,
     check_abelian_flag,
     check_abelian_consequences,
     check_center,
     check_commutator_subgroup,
+    check_special_subgroups_listed,
 ]
 
 
