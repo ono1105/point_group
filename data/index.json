@@ -220,6 +220,14 @@
       "order": 24,
       "crystal_system": "hexagonal",
       "file": "27_D6h.json"
+    },
+    {
+      "id": 28,
+      "schoenflies": "T",
+      "hermann_mauguin": "23",
+      "order": 12,
+      "crystal_system": "cubic",
+      "file": "28_T.json"
     }
   ]
 }
