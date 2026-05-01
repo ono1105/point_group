@@ -649,6 +649,61 @@ def check_axis_normalization(g: PointGroup, tol: float = 1e-9) -> CheckResult:
     return r
 
 
+def check_geometry_hints_match_matrices(g: PointGroup, tol: float = 1e-9) -> CheckResult:
+    """axis / plane_normal / rotation_angle_deg が行列の幾何と一致するか。
+
+    既存の matrix_consistency は積表との一致を検査するが、補助メタデータ
+    である axis や plane_normal が行列そのものと合うかは別途確認する。
+    """
+    r = CheckResult("geometry_hints_match_matrices")
+    for e in g.elements:
+        if e.axis is not None:
+            axis = np.array(e.axis, dtype=float)
+            image = e.matrix @ axis
+            if e.type == "rotation" and not np.allclose(image, axis, atol=tol):
+                r.fail(
+                    f"g_{e.index} ({e.schoenflies}): axis={e.axis} が "
+                    f"回転行列で固定されない (M axis={image.tolist()})"
+                )
+            elif e.type == "improper_rotation":
+                if not (
+                    np.allclose(image, axis, atol=tol)
+                    or np.allclose(image, -axis, atol=tol)
+                ):
+                    r.fail(
+                        f"g_{e.index} ({e.schoenflies}): axis={e.axis} が "
+                        f"improper_rotation 行列の固有ベクトルでない "
+                        f"(M axis={image.tolist()})"
+                    )
+
+        if e.plane_normal is not None and e.type == "reflection":
+            normal = np.array(e.plane_normal, dtype=float)
+            image = e.matrix @ normal
+            if not np.allclose(image, -normal, atol=tol):
+                r.fail(
+                    f"g_{e.index} ({e.schoenflies}): plane_normal="
+                    f"{e.plane_normal} が反射行列の -1 固有ベクトルでない "
+                    f"(M normal={image.tolist()})"
+                )
+
+        if (
+            e.type == "rotation"
+            and e.index != 0
+            and e.rotation_angle_deg is not None
+        ):
+            cos_angle = np.clip((np.trace(e.matrix) - 1.0) / 2.0, -1.0, 1.0)
+            actual = float(np.degrees(np.arccos(cos_angle)))
+            declared = float(e.rotation_angle_deg) % 360.0
+            declared_unsigned = min(declared, 360.0 - declared)
+            if not np.isclose(actual, declared_unsigned, atol=1e-7):
+                r.fail(
+                    f"g_{e.index} ({e.schoenflies}): rotation_angle_deg="
+                    f"{e.rotation_angle_deg} だが trace からの角度は "
+                    f"{actual:.8g}"
+                )
+    return r
+
+
 def check_conjugacy_class_homogeneous(g: PointGroup) -> CheckResult:
     """同じ共役類の元はすべて同じ element_order を持つ（共役類の不変量）。"""
     r = CheckResult("conjugacy_class_homogeneous")
@@ -761,6 +816,7 @@ ALL_CHECKS: list[Callable[[PointGroup], CheckResult]] = [
     check_matrix_orthogonal,
     check_type_matches_det,
     check_axis_normalization,
+    check_geometry_hints_match_matrices,
     check_element_to_index,
     check_generators_generate,
     check_subgroup_identity,
