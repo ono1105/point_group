@@ -163,7 +163,7 @@
       "is_normal": false,
       "is_trivial": false,
       "is_whole_group": false,
-      "is_maximal": false,
+      "is_maximal": true,
       "coset_representatives": [0, 1, 2],
       "quotient_group": null,
       "note": "x 軸まわりの C2'。C3 で他の 2 本と共役、正規でないため商群は群にならない"
@@ -176,7 +176,7 @@
       "is_normal": false,
       "is_trivial": false,
       "is_whole_group": false,
-      "is_maximal": false,
+      "is_maximal": true,
       "coset_representatives": [0, 1, 2],
       "quotient_group": null,
       "note": "(cos 120°, sin 120°, 0) 軸まわりの C2''。C3 で他の 2 本と共役、正規でないため商群は群にならない"
@@ -189,7 +189,7 @@
       "is_normal": false,
       "is_trivial": false,
       "is_whole_group": false,
-      "is_maximal": false,
+      "is_maximal": true,
       "coset_representatives": [0, 1, 2],
       "quotient_group": null,
       "note": "(cos 240°, sin 240°, 0) 軸まわりの C2'''。C3 で他の 2 本と共役、正規でないため商群は群にならない"

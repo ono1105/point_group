@@ -303,6 +303,316 @@ def check_metadata(g: PointGroup) -> CheckResult:
     return r
 
 
+def check_inverse_symmetry(g: PointGroup) -> CheckResult:
+    """If g_i.inverse = j then g_j.inverse must be i."""
+    r = CheckResult("inverse_symmetry")
+    for e in g.elements:
+        j = e.inverse
+        if g.elements[j].inverse != e.index:
+            r.fail(
+                f"g_{e.index}.inverse = {j} but g_{j}.inverse = "
+                f"{g.elements[j].inverse}"
+            )
+    return r
+
+
+def check_conjugacy_partition(g: PointGroup) -> CheckResult:
+    """Conjugacy classes must partition {0, ..., n-1} (cover and disjoint)."""
+    r = CheckResult("conjugacy_partition")
+    seen = set()
+    total = 0
+    for cc in g.conjugacy_classes:
+        cc_set = set(cc)
+        overlap = seen & cc_set
+        if overlap:
+            r.fail(f"共役類が重複: {sorted(overlap)} が複数の類に属する")
+        seen |= cc_set
+        total += len(cc)
+    expected = set(range(g.order))
+    if seen != expected:
+        missing = expected - seen
+        extra = seen - expected
+        if missing:
+            r.fail(f"共役類が要素を覆わない: 欠けている要素 {sorted(missing)}")
+        if extra:
+            r.fail(f"共役類に範囲外の要素: {sorted(extra)}")
+    if total != g.order:
+        r.fail(f"共役類サイズ合計 {total} ≠ order {g.order}")
+    if g.conjugacy_class_names and len(g.conjugacy_class_names) != len(g.conjugacy_classes):
+        r.fail(
+            f"conjugacy_class_names 長 {len(g.conjugacy_class_names)} "
+            f"≠ conjugacy_classes 長 {len(g.conjugacy_classes)}"
+        )
+    return r
+
+
+def check_abelian_consequences(g: PointGroup) -> CheckResult:
+    """Abelian groups: center = G, all conjugacy classes have size 1,
+    and commutator subgroup = {E}."""
+    r = CheckResult("abelian_consequences")
+    if g.abelian:
+        if len(g.center) != g.order:
+            r.fail(
+                f"abelian=True だが |center|={len(g.center)} "
+                f"≠ |G|={g.order}（中心は全要素であるべき）"
+            )
+        for cc in g.conjugacy_classes:
+            if len(cc) != 1:
+                r.fail(f"abelian=True だが共役類 {cc} のサイズが 1 でない")
+                break
+        if set(g.commutator_subgroup) != {0}:
+            r.fail(
+                f"abelian=True だが commutator_subgroup="
+                f"{sorted(g.commutator_subgroup)} ≠ {{0}}"
+            )
+    else:
+        if set(g.commutator_subgroup) == {0}:
+            r.fail(
+                "abelian=False だが commutator_subgroup={0}"
+                "（非可換なら交換子部分群は自明群より大きい）"
+            )
+    return r
+
+
+def check_subgroup_flags(g: PointGroup) -> CheckResult:
+    """is_trivial / is_whole_group flag consistency.
+
+    - is_trivial=True ⟺ order = 1
+    - is_whole_group=True ⟺ order = |G|
+    - 自明群と全群は必ず正規
+    - 自明群と全群はそれぞれ subgroups リストに 1 個ずつ
+    """
+    r = CheckResult("subgroup_flags")
+    n_triv = 0
+    n_whole = 0
+    for sub in g.subgroups:
+        if sub.is_trivial and sub.order != 1:
+            r.fail(
+                f"{sub.schoenflies}: is_trivial=True なのに order={sub.order}"
+            )
+        if sub.order == 1 and not sub.is_trivial:
+            r.fail(f"{sub.schoenflies}: order=1 なのに is_trivial=False")
+        if sub.is_whole_group and sub.order != g.order:
+            r.fail(
+                f"{sub.schoenflies}: is_whole_group=True なのに "
+                f"order={sub.order} ≠ |G|={g.order}"
+            )
+        if sub.order == g.order and not sub.is_whole_group:
+            r.fail(
+                f"{sub.schoenflies}: order=|G| なのに is_whole_group=False"
+            )
+        if sub.is_trivial and not sub.is_normal:
+            r.fail(f"{sub.schoenflies}: 自明群が is_normal=False（自明群は常に正規）")
+        if sub.is_whole_group and not sub.is_normal:
+            r.fail(f"{sub.schoenflies}: 全群が is_normal=False（全群は常に正規）")
+        if sub.is_trivial:
+            n_triv += 1
+        if sub.is_whole_group:
+            n_whole += 1
+    if n_triv != 1:
+        r.fail(f"is_trivial=True の部分群が {n_triv} 個（期待 1）")
+    if n_whole != 1:
+        r.fail(f"is_whole_group=True の部分群が {n_whole} 個（期待 1）")
+    return r
+
+
+def check_quotient_group_consistency(g: PointGroup) -> CheckResult:
+    """quotient_group field consistency.
+
+    - is_normal=True ⟹ quotient_group is not None
+    - is_normal=False ⟹ quotient_group is None
+    - 自明群 {E} の quotient_group は親群と同名（G/{E} ≅ G）
+    - 全群 G の quotient_group は "C1"（G/G ≅ C1）
+    """
+    r = CheckResult("quotient_group_consistency")
+    for sub in g.subgroups:
+        if sub.is_normal and sub.quotient_group is None:
+            r.fail(
+                f"{sub.schoenflies}: 正規部分群なのに quotient_group が None"
+            )
+        if not sub.is_normal and sub.quotient_group is not None:
+            r.fail(
+                f"{sub.schoenflies}: 非正規なのに "
+                f"quotient_group='{sub.quotient_group}' が設定されている"
+            )
+        if sub.is_trivial and sub.quotient_group != g.schoenflies:
+            r.fail(
+                f"{sub.schoenflies}: 自明群の quotient_group="
+                f"'{sub.quotient_group}'（期待: '{g.schoenflies}'）"
+            )
+        if sub.is_whole_group and sub.quotient_group != "C1":
+            r.fail(
+                f"{sub.schoenflies}: 全群の quotient_group="
+                f"'{sub.quotient_group}'（期待: 'C1'）"
+            )
+    return r
+
+
+def check_coset_representatives(g: PointGroup) -> CheckResult:
+    """coset_representatives の長さは index_in_parent と一致し、
+    実際に左剰余類の代表系を成すこと。"""
+    r = CheckResult("coset_representatives")
+    for sub in g.subgroups:
+        reps = sub.coset_representatives
+        if len(reps) != sub.index_in_parent:
+            r.fail(
+                f"{sub.schoenflies}: |coset_representatives|={len(reps)} "
+                f"≠ index_in_parent={sub.index_in_parent}"
+            )
+            continue
+        # 各 rep × H が互いに素で、合わせて G になるか
+        H = set(sub.element_indices)
+        seen = set()
+        for x in reps:
+            coset = {g.multiply(x, h) for h in H}
+            if coset & seen:
+                r.fail(
+                    f"{sub.schoenflies}: coset_representatives が重複した剰余類を含む "
+                    f"(rep {x} の剰余類が他と交わる)"
+                )
+                break
+            seen |= coset
+        else:
+            if seen != set(range(g.order)):
+                missing = set(range(g.order)) - seen
+                r.fail(
+                    f"{sub.schoenflies}: coset_representatives が G を覆わない "
+                    f"(欠けている要素: {sorted(missing)})"
+                )
+    return r
+
+
+def check_is_maximal(g: PointGroup) -> CheckResult:
+    """is_maximal flag must agree with the actual maximality test.
+
+    A proper subgroup H is maximal iff there is no proper subgroup K
+    with H < K ⊊ G.
+    """
+    r = CheckResult("is_maximal")
+    proper = [
+        s for s in g.subgroups
+        if not s.is_trivial and not s.is_whole_group
+    ]
+    for s in proper:
+        H = set(s.element_indices)
+        actual_maximal = True
+        for t in proper:
+            if t is s:
+                continue
+            T = set(t.element_indices)
+            if H < T:  # H が真の部分集合
+                actual_maximal = False
+                break
+        if actual_maximal != s.is_maximal:
+            r.fail(
+                f"{s.schoenflies}: declared is_maximal={s.is_maximal}, "
+                f"actual={actual_maximal}"
+            )
+    # 自明群と全群は is_maximal=False（慣習）
+    for s in g.subgroups:
+        if (s.is_trivial or s.is_whole_group) and s.is_maximal:
+            r.fail(
+                f"{s.schoenflies}: 自明群/全群は is_maximal=False のはず"
+                f"（極大「真」部分群の意味）"
+            )
+    return r
+
+
+def check_element_to_index(g: PointGroup) -> CheckResult:
+    """raw JSON の element_to_index と elements[i].schoenflies が一致するか。"""
+    r = CheckResult("element_to_index")
+    raw = g._raw
+    e2i = raw.get("element_to_index")
+    if e2i is None:
+        r.fail("element_to_index フィールドが存在しない")
+        return r
+    # 双方向一致を確認
+    name_to_idx_from_elems = {e.schoenflies: e.index for e in g.elements}
+    if dict(e2i) != name_to_idx_from_elems:
+        # どちらにあって、どちらに無いかを詳しく報告
+        only_in_e2i = set(e2i.items()) - set(name_to_idx_from_elems.items())
+        only_in_elems = set(name_to_idx_from_elems.items()) - set(e2i.items())
+        if only_in_e2i:
+            r.fail(
+                f"element_to_index にあるが elements と不一致: "
+                f"{sorted(only_in_e2i)}"
+            )
+        if only_in_elems:
+            r.fail(
+                f"elements にあるが element_to_index と不一致: "
+                f"{sorted(only_in_elems)}"
+            )
+    if len(e2i) != g.order:
+        r.fail(f"|element_to_index|={len(e2i)} ≠ order={g.order}")
+    return r
+
+
+def check_index_consistency() -> CheckResult:
+    """data/index.json と各 JSON ファイルの整合性をチェック。
+
+    - index.json で参照されるファイルが実在
+    - data/ 内の XX_*.json ファイルが index.json に登録されている
+    - id とファイル名 prefix が一致（id=N → "NN_*.json"）
+    - 各 JSON の schoenflies / hermann_mauguin / order / crystal_system が
+      index.json と一致
+    """
+    from loader import DATA_DIR
+    r = CheckResult("index_consistency")
+    idx_entries = list_groups()
+
+    # ファイルの存在確認 + 双方向の比較
+    idx_files = {e["file"] for e in idx_entries}
+    actual_files = {p.name for p in DATA_DIR.glob("[0-9][0-9]_*.json")}
+    missing = idx_files - actual_files
+    extra = actual_files - idx_files
+    if missing:
+        r.fail(f"index.json に登録されているが data/ に無いファイル: {sorted(missing)}")
+    if extra:
+        r.fail(f"data/ にあるが index.json に登録されていないファイル: {sorted(extra)}")
+
+    # id とファイル名 prefix
+    seen_ids = set()
+    for entry in idx_entries:
+        if entry["id"] in seen_ids:
+            r.fail(f"id={entry['id']} が重複している")
+        seen_ids.add(entry["id"])
+        prefix = f"{entry['id']:02d}_"
+        if not entry["file"].startswith(prefix):
+            r.fail(
+                f"id={entry['id']} のファイル名 '{entry['file']}' が "
+                f"prefix '{prefix}' で始まっていない"
+            )
+
+    # 各 JSON の中身と index.json のメタデータ
+    for entry in idx_entries:
+        try:
+            g = load_group(entry["schoenflies"])
+        except Exception as e:
+            r.fail(f"{entry['schoenflies']}: 読み込み失敗 ({e})")
+            continue
+        if g.schoenflies != entry["schoenflies"]:
+            r.fail(
+                f"{entry['file']}: schoenflies 不一致 "
+                f"(index='{entry['schoenflies']}', file='{g.schoenflies}')"
+            )
+        if g.hermann_mauguin != entry["hermann_mauguin"]:
+            r.fail(
+                f"{g.schoenflies}: hermann_mauguin 不一致 "
+                f"(index='{entry['hermann_mauguin']}', file='{g.hermann_mauguin}')"
+            )
+        if g.order != entry["order"]:
+            r.fail(
+                f"{g.schoenflies}: order 不一致 "
+                f"(index={entry['order']}, file={g.order})"
+            )
+        if g.crystal_system != entry["crystal_system"]:
+            r.fail(
+                f"{g.schoenflies}: crystal_system 不一致 "
+                f"(index='{entry['crystal_system']}', file='{g.crystal_system}')"
+            )
+    return r
+
+
 # ---------------------------------------------------------------------------
 # Driver
 # ---------------------------------------------------------------------------
@@ -313,15 +623,23 @@ ALL_CHECKS: list[Callable[[PointGroup], CheckResult]] = [
     check_closure,
     check_associativity,
     check_inverse,
+    check_inverse_symmetry,
     check_element_order,
     check_matrix_consistency,
+    check_element_to_index,
     check_subgroup_identity,
     check_subgroup_order,
     check_subgroup_closure,
+    check_subgroup_flags,
+    check_quotient_group_consistency,
+    check_coset_representatives,
+    check_is_maximal,
     check_lagrange,
     check_normality_flags,
     check_conjugacy_classes,
+    check_conjugacy_partition,
     check_abelian_flag,
+    check_abelian_consequences,
     check_center,
     check_commutator_subgroup,
 ]
@@ -370,6 +688,31 @@ def main() -> int:
         return 0
 
     total_failures = 0
+
+    # 全群モードのときだけ index.json のグローバル整合性をチェック
+    if not args.groups:
+        idx_res = check_index_consistency()
+        if not idx_res.ok:
+            mark = "NG"
+            if not args.quiet:
+                print(f"=== index.json 整合性 ===")
+                print(f"  [{mark}] {idx_res.name}")
+            else:
+                print(f"[NG] (global): {idx_res.name}")
+            for err in idx_res.errors[:10]:
+                indent = "      " if not args.quiet else "    "
+                for line in err.splitlines():
+                    print(f"{indent}{line}")
+            if len(idx_res.errors) > 10:
+                print(f"      ... and {len(idx_res.errors) - 10} more errors")
+            total_failures += 1
+            if not args.quiet:
+                print()
+        elif not args.quiet:
+            print("=== index.json 整合性 ===")
+            print(f"  [OK] {idx_res.name}")
+            print()
+
     for name in targets:
         g = load_group(name)
         results = validate_group(g, quiet=args.quiet)

@@ -164,10 +164,10 @@
       "is_normal": true,
       "is_trivial": false,
       "is_whole_group": false,
-      "is_maximal": false,
+      "is_maximal": true,
       "coset_representatives": [0, 1, 2],
       "quotient_group": "C3",
-      "note": "{E, C2}。C6³=C2。商群 C6/C2 ≅ C3"
+      "note": "{E, C2}。C6³=C2。maximal、商群 C6/C2 ≅ C3"
     },
     {
       "schoenflies": "C3",

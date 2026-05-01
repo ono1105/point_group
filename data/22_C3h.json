@@ -165,10 +165,10 @@
       "is_normal": true,
       "is_trivial": false,
       "is_whole_group": false,
-      "is_maximal": false,
+      "is_maximal": true,
       "coset_representatives": [0, 1, 2],
       "quotient_group": "C3",
-      "note": "{E, σh}。C3h ≅ C3 × Cs の Cs 因子。商群 C3h/Cs ≅ C3"
+      "note": "{E, σh}。C3h ≅ C3 × Cs の Cs 因子。maximal、商群 C3h/Cs ≅ C3"
     },
     {
       "schoenflies": "C3",

@@ -509,8 +509,8 @@
       "is_whole_group": false,
       "is_maximal": false,
       "coset_representatives": [0, 1, 2, 6, 7, 8, 12, 13, 14, 18, 19, 20],
-      "quotient_group": null,
-      "note": "主軸 C2(z)。中心元"
+      "quotient_group": "D6",
+      "note": "主軸 C2(z)。中心元。D6h/{E,C2z} ≅ D6（≅ C6v、Ci, Cs(σh) で割った商と同型）"
     },
     {
       "schoenflies": "C2'(0°)",
